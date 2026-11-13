@@ -58,7 +58,7 @@ export default function Shell({ children }: { children: ReactNode }) {
             <div>
               <p className="font-display text-xl font-semibold">Campus Flora</p>
               <p className="mt-1 max-w-md text-ink/70">
-                {entries.length} plant species on the IIT Tirupati campus, documented by the Nisarga club with the horticulture section. Photos by Nisarga members.
+                {entries.length} plant species on the IIT Tirupati campus, documented by the Nisarga club with the horticulture section.
               </p>
             </div>
           </div>
