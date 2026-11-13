@@ -1,4 +1,4 @@
-import { DEFAULT_BLOG_ID, googleError, htmlToText } from "./blogger";
+import { DEFAULT_BLOG_ID, googleError, htmlToText } from "./blogger.js";
 
 /**
  * Text of the site's About page, written in Blogger under "Pages" (not "Posts").

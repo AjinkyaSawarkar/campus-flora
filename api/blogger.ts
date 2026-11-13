@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { fetchPlants } from "../shared/blogger";
+import { fetchPlants } from "../shared/blogger.js";
 
 export default async function handler(_req: VercelRequest, res: VercelResponse) {
   const apiKey = process.env.BLOGGER_API_KEY;

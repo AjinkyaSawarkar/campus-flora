@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { identifyPlant } from "../shared/identify";
+import { identifyPlant } from "../shared/identify.js";
 
 /** POST { image: base64, mime } -> species suggestions from Pl@ntNet. The API key stays on the server. */
 export default async function handler(req: VercelRequest, res: VercelResponse) {

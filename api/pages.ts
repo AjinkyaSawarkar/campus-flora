@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { fetchPages } from "../shared/pages";
+import { fetchPages } from "../shared/pages.js";
 
 /** About / Team / Contact text written as Blogger "Pages". */
 export default async function handler(_req: VercelRequest, res: VercelResponse) {
