@@ -35,6 +35,10 @@ export default function Guide() {
         Plant text lives in <strong>Blogger</strong>. Photos sent by visitors are checked in a <strong>Google Sheet</strong>. You need to be
         added to both by the site's owner. Changes show on the website within about five minutes.
       </p>
+      <p className="mt-3 text-lg text-ink/75">
+        The <Link href="/check" className="font-medium underline">content check page</Link> lists anything the website could not use as intended:
+        duplicate posts, posts missing a language, photos with a wrong plant name, and so on. Look at it after adding or changing posts.
+      </p>
 
       <nav aria-label="On this page" className="no-print mt-8 rounded-2xl bg-white p-5 ring-1 ring-ink/10">
         <ol className="list-decimal space-y-1.5 pl-5">

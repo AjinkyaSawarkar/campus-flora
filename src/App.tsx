@@ -8,6 +8,7 @@ import Contribute from "./pages/Contribute";
 import MapPage from "./pages/MapPage";
 import Guide from "./pages/Guide";
 import TagRedirect from "./pages/TagRedirect";
+import Check from "./pages/Check";
 import NotFound from "./pages/NotFound";
 import Shell from "./components/Shell";
 import Sprout from "./components/Sprout";
@@ -28,6 +29,7 @@ export default function App() {
           <Route path="/contribute" component={Contribute} />
           <Route path="/map" component={MapPage} />
           <Route path="/guide" component={Guide} />
+          <Route path="/check" component={Check} />
           <Route path="/about" component={About} />
           {/* Team and Contact now live on the About page. */}
           <Route path="/team"><Redirect to="/about#team" replace /></Route>
