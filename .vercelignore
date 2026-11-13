@@ -1,0 +1,12 @@
+# Files that must not be uploaded to Vercel: tools that run on your computer, backups,
+# and anything holding private keys or sign-ins.
+content-pipeline/
+contributions/
+_before_redesign/
+.env
+.env.*
+!.env.example
+*.zip
+README.pdf
+node_modules/
+dist/

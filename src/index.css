@@ -1,0 +1,79 @@
+/* Fonts are bundled with the site (no Google Fonts request). */
+@import "@fontsource/dm-sans/400.css";
+@import "@fontsource/dm-sans/500.css";
+@import "@fontsource/dm-sans/600.css";
+@import "@fontsource/cormorant-garamond/300.css";
+@import "@fontsource/cormorant-garamond/500.css";
+@import "@fontsource/cormorant-garamond/600.css";
+@import "@fontsource/cormorant-garamond/500-italic.css";
+@import "@fontsource/caveat/500.css";
+@import "@fontsource/caveat/600.css";
+/* Telugu and Hindi text. Only downloaded on pages that show those scripts. */
+@import "@fontsource/noto-sans-telugu/400.css";
+@import "@fontsource/noto-sans-telugu/500.css";
+@import "@fontsource/noto-sans-devanagari/400.css";
+@import "@fontsource/noto-sans-devanagari/500.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-paper font-sans text-ink antialiased; }
+  h1, h2, h3 { @apply font-display; }
+  :focus-visible { outline: 2px solid #b4694a; outline-offset: 3px; border-radius: 6px; }
+}
+
+@layer components {
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors; }
+  .btn-dark { @apply btn bg-forest text-white hover:bg-moss; }
+  .btn-line { @apply btn border border-ink/80 hover:bg-ink hover:text-white; }
+  .eyebrow { @apply text-xs font-medium uppercase tracking-[0.18em] text-ink/60; }
+  .sci { @apply font-display italic; }
+}
+
+/* Text written in Blogger pages (About / Team / Contact) */
+.rich { @apply text-lg leading-relaxed text-ink/85; }
+.rich > * + * { margin-top: 1rem; }
+.rich h2, .rich h3, .rich h4 { @apply font-display font-semibold text-ink; margin-top: 1.75rem; }
+.rich h2 { font-size: 1.9rem; }
+.rich h3 { font-size: 1.5rem; }
+.rich ul { list-style: disc; padding-left: 1.4rem; }
+.rich ol { list-style: decimal; padding-left: 1.4rem; }
+.rich li + li { margin-top: 0.35rem; }
+.rich a { text-decoration: underline; text-underline-offset: 3px; }
+.rich img { max-width: 100%; height: auto; border-radius: 0.75rem; }
+.rich table { border-collapse: collapse; width: 100%; font-size: 1rem; }
+.rich td, .rich th { border: 1px solid rgb(22 26 23 / 0.15); padding: 0.5rem 0.75rem; text-align: left; }
+.rich blockquote { border-left: 3px solid #4f6f43; padding-left: 1rem; }
+
+/* Campus map */
+.cf-pin { display: block; width: 22px; height: 22px; border-radius: 9999px; border: 3px solid #fff; box-shadow: 0 1px 6px rgb(0 0 0 / 0.55); }
+.cf-pop { display: flex; flex-direction: column; gap: 2px; font-family: "DM Sans", system-ui, sans-serif; font-size: 13px; min-width: 150px; }
+.cf-pop img { width: 100%; height: 110px; object-fit: cover; border-radius: 8px; margin-bottom: 6px; }
+.cf-pop strong { font-family: "Cormorant Garamond", Georgia, serif; font-size: 20px; line-height: 1.1; }
+.cf-pop em { color: rgb(22 26 23 / 0.7); }
+.cf-pop span { color: rgb(22 26 23 / 0.6); }
+.cf-pop-links { display: flex; gap: 12px; margin-top: 6px; }
+.cf-pop-links a { color: #1f3a2b; font-weight: 600; text-decoration: underline; }
+.cf-locate { background: #fff; border-radius: 9999px; padding: 8px 14px; font: 600 13px "DM Sans", system-ui, sans-serif; box-shadow: 0 1px 6px rgb(0 0 0 / 0.4); cursor: pointer; }
+.leaflet-container { font-family: "DM Sans", system-ui, sans-serif; }
+
+@keyframes sway { 0%,100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+@keyframes hop { 0%,100% { transform: translateY(0); } 40% { transform: translateY(-18px); } }
+.sprout-idle { animation: sway 4s ease-in-out infinite; transform-origin: bottom center; }
+.sprout-hop { animation: hop 0.5s ease-out; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  header, footer, .no-print { display: none !important; }
+}

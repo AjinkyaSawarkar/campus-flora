@@ -1,0 +1,16 @@
+node_modules
+dist
+.env
+.vercel
+
+# Private files
+.env.*
+!.env.example
+content-pipeline/
+# content-pipeline/.env
+# content-pipeline/token.json
+# content-pipeline/client_secret.json
+
+
+# Backup of the old design (kept on your computer only)
+_before_redesign/
