@@ -29,7 +29,10 @@ export function usePlants() {
       const res = await fetch("/api/blogger");
       if (!res.ok) {
         const body = (await res.json().catch(() => ({}))) as { message?: string };
-        throw new Error(body.message || `The plant API answered ${res.status}.`);
+        throw new Error(
+          body.message ||
+            `The plant API answered ${res.status} without an explanation, which usually means the server function crashed (Vercel → Logs shows why).`,
+        );
       }
       const data: unknown = await res.json();
       return Array.isArray(data) ? data.map(normalize) : [];
