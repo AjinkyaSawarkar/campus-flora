@@ -27,7 +27,10 @@ export function usePlants() {
     queryKey: ["plants"],
     queryFn: async () => {
       const res = await fetch("/api/blogger");
-      if (!res.ok) throw new Error(`The plant API answered ${res.status}.`);
+      if (!res.ok) {
+        const body = (await res.json().catch(() => ({}))) as { message?: string };
+        throw new Error(body.message || `The plant API answered ${res.status}.`);
+      }
       const data: unknown = await res.json();
       return Array.isArray(data) ? data.map(normalize) : [];
     },

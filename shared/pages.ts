@@ -1,4 +1,4 @@
-import { DEFAULT_BLOG_ID, htmlToText } from "./blogger";
+import { DEFAULT_BLOG_ID, googleError, htmlToText } from "./blogger";
 
 /**
  * Text of the site's About page, written in Blogger under "Pages" (not "Posts").
@@ -71,7 +71,7 @@ export function sanitizeHtml(html = ""): string {
 export async function fetchPages(apiKey: string, blogId = process.env.BLOGGER_BLOG_ID || DEFAULT_BLOG_ID): Promise<SitePages> {
   const params = new URLSearchParams({ key: apiKey, fetchBodies: "true", status: "live" });
   const res = await fetch(`https://www.googleapis.com/blogger/v3/blogs/${blogId}/pages?${params}`);
-  if (!res.ok) throw new Error(`Blogger API responded with ${res.status}`);
+  if (!res.ok) throw new Error(await googleError(res));
   const data = (await res.json()) as { items?: { title?: string; content?: string }[] };
   const out: SitePages = {};
   for (const p of data.items ?? []) {

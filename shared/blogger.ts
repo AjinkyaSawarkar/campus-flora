@@ -74,6 +74,18 @@ export function htmlToText(html = ""): string {
     .slice(0, 8000); // room for paragraphs in three languages plus the details
 }
 
+/** Google's own explanation of a failed request ("API key not valid", "Requests from referer … are blocked", …). */
+export async function googleError(res: Response): Promise<string> {
+  let reason = "";
+  try {
+    const body = (await res.json()) as { error?: { message?: string; status?: string } };
+    reason = body.error?.message || body.error?.status || "";
+  } catch {
+    /* not JSON */
+  }
+  return `Blogger API responded with ${res.status}${reason ? `: ${reason}` : ""}`;
+}
+
 export async function fetchPlants(apiKey: string, blogId = process.env.BLOGGER_BLOG_ID || DEFAULT_BLOG_ID): Promise<Plant[]> {
   const plants: Plant[] = [];
   let pageToken: string | undefined;
@@ -81,7 +93,7 @@ export async function fetchPlants(apiKey: string, blogId = process.env.BLOGGER_B
     const params = new URLSearchParams({ key: apiKey, maxResults: "100", fetchImages: "true" });
     if (pageToken) params.set("pageToken", pageToken);
     const res = await fetch(`https://www.googleapis.com/blogger/v3/blogs/${blogId}/posts?${params}`);
-    if (!res.ok) throw new Error(`Blogger API responded with ${res.status}`);
+    if (!res.ok) throw new Error(await googleError(res));
     const data = (await res.json()) as RawResponse;
     for (const p of data.items ?? []) {
       plants.push({

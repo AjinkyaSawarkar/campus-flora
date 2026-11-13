@@ -63,6 +63,7 @@ export default function Home() {
       {error && (
         <p role="alert" className="mx-auto max-w-[1400px] px-4 pb-8 text-clay sm:px-8">
           Photos could not be loaded from Blogger right now. The plant list below still works.
+          <span className="mt-1 block text-xs text-ink/50">Details: {(error as Error).message}</span>
         </p>
       )}
 
